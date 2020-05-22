@@ -1,0 +1,4 @@
+# Project exclude paths
+/database-migration/target/
+/webapp/src/main/resources/public/resources/node_modules/
+/webapp/target/

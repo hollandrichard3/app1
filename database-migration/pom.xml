@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>app1</artifactId>
+        <groupId>com.lessons</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>database-migration</artifactId>
+    <packaging>jar</packaging>
+
+    <name>database-migration</name>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.flywaydb</groupId>
+            <artifactId>flyway-commandline</artifactId>
+            <version>5.0.7</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.flywaydb</groupId>
+            <artifactId>flyway-core</artifactId>
+            <version>5.0.7</version>
+        </dependency>
+
+        <dependency>
+            <!-- Database Driver that Flyway will use to talk to the database -->
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>42.1.4</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.flywaydb</groupId>
+                <artifactId>flyway-maven-plugin</artifactId>
+                <version>5.0.7</version>
+
+                <configuration>
+                    <!-- Set the postgres credentials when running mvn flyway:migrate from command-line -->
+                    <user>app1_user</user>
+                    <password>secret</password>
+                    <url>jdbc:postgresql://localhost:5432/app1_db</url>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

@@ -1,0 +1,50 @@
+##########################################################
+# application.yaml   (used for development purposes)
+##########################################################
+name: app1
+server.servlet.context-path: /app1
+
+
+# All properties up here are applied by default
+max.files.to.upload: 5000
+spring.servlet.multipart.max-file-size: 100MB
+spring.servlet.multipart.max-request-size: 200MB
+spring.servlet.multipart.enabled: true
+max.upload.size.bytes: 1000
+get.reports.default.pagesize: 20
+my.string.list: first, second, third
+es.enabled: true
+es.hostname: localhost
+es.port: 9020
+
+###########################################################
+# Database Settings
+##########################################################
+app.datasource:
+  driver-class-name: org.postgresql.Driver
+  url: jdbc:postgresql://localhost:5432/app1_db
+  username: app1_user
+  password: secret
+  maxPoolSize: 10
+
+---
+#######################################
+# Dev Profile
+# (listens on port 8080)
+#######################################
+spring.profiles: dev
+
+development.mode: true
+server.port: 8080
+
+
+
+---
+#######################################
+# Prod Profile
+# (listens on port 8443)
+#######################################
+spring.profiles: prod
+
+development.mode: false
+server.port: 8080
